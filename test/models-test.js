@@ -141,4 +141,9 @@ describe('migrating models', function(){
     it(migrates('controllers/with-mixin.js'));
   });
 
+  describe("Migrates App.Route to routes/basic. Imports routes/basic correctly ", function(){
+    it(migrates('routes/basic.js'));
+    it(migrates('routes/foo.js'));
+  });
+
 });
