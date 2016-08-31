@@ -22,13 +22,13 @@ function migrator(options) {
   migrator.expectedOutputFixtureDirectory = path.join(__dirname, "fixtures/", opts.inputFixtures, '/output');
   migrator.clean = function(){
     rimraf.sync(tmpDir);
-  }
+  };
   return migrator;
 }
 
 function migratorResult(migrator, fixtureName){
   var file = path.join(migrator.outputDirectory, fixtureName);
-  return fs.readFileSync(file).toString().split('\n');;
+  return fs.readFileSync(file).toString().split('\n');
 }
 
 function fixture(migrator, fixtureName){
@@ -57,7 +57,7 @@ module.exports.it = function(result){
     return it(result, arguments[1]);
   }
   return it(result[0], result[1]);
-}
+};
 
 module.exports.it.only = function(result){
   if (!Array.isArray(result)) {

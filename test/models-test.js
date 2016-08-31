@@ -141,4 +141,12 @@ describe('migrating models', function(){
     it(migrates('controllers/with-mixin.js'));
   });
 
+  describe('Moves window var definition into globals directory', function(){
+    it(migrates('globals/window-var.js'));
+  });
+
+  describe('Moves self executing anonymous functions to globals', function(){
+    it(migrates('globals/analytics/global-analytics.js'));
+  });
+
 });
