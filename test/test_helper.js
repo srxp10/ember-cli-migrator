@@ -5,6 +5,7 @@ var fs = require('fs');
 var inflector = require('underscore.string');
 var assert = require('chai').assert;
 var _ = require('lodash');
+var helper = require('../lib/helper');
 
 var tmpDir = path.join(__dirname, "../tmp");
 
@@ -37,12 +38,12 @@ function fixture(migrator, fixtureName){
 }
 
 function migratesCorrectly(inputFileName, outputFileName) {
-  outputFileName = outputFileName || inflector.dasherize(inputFileName);
+  outputFileName = outputFileName || helper.dasherizePath(inputFileName);
   var spec = function(){
     var migrator = this.migrator;
     var underscored = inflector.underscored(inputFileName);
     var expected = fixture(migrator, outputFileName);
-    var actual  = migratorResult(migrator, inflector.dasherize(inputFileName));
+    var actual  = migratorResult(migrator, helper.dasherizePath(inputFileName));
     assert.deepEqual(actual, expected);
   };
   return ['migrates ' + inputFileName + ' correctly', spec];
