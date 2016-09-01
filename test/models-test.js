@@ -141,9 +141,17 @@ describe('migrating models', function(){
     it(migrates('controllers/with-mixin.js'));
   });
 
-  describe("Migrates App.Route to routes/basic. Imports routes/basic correctly ", function(){
+  describe("Migrates App.Route to routes/basic. Imports routes/basic correctly ", function() {
     it(migrates('routes/basic.js'));
     it(migrates('routes/foo.js'));
+  });
+
+  describe('Moves window var definition into globals directory', function(){
+    it(migrates('globals/window-var.js'));
+  });
+
+  describe('Moves self executing anonymous functions to globals', function(){
+    it(migrates('globals/analytics/global-analytics.js'));
   });
 
 });
