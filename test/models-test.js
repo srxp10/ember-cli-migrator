@@ -128,6 +128,12 @@ describe('migrating models', function(){
     it(migrates('routes/index.js'));
   });
 
+  describe('Works with nested folders', function(){
+    it(migrates('controllers/sub-folder/sub.js'));
+    it(migrates('routes/sub-folder/sub.js'));
+    it(migrates('models/sub-folder/sub.js'));
+  });
+
   describe('Preserve comments', function(){
     it(migrates('controllers/preserve-comments.js'));
   });
